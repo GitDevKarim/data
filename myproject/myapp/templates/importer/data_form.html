@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Form</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{% if form.instance.id %}Edit Data{% else %}Add New Data{% endif %}</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+        <a href="{% url 'data_list' %}" class="button">Back to List</a>
+    </div>
+</body>
+</html>

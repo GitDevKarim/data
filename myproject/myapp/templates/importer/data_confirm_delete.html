@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Deletion</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirm Deletion</h1>
+        <p>Are you sure you want to delete the following data entry?</p>
+        <p><strong>ID:</strong> {{ data.id }}</p>
+        <p><strong>Column Name:</strong> {{ data.column_name }}</p>
+        <p><strong>Column Type:</strong> {{ data.column_type }}</p>
+        <p><strong>Required:</strong> {{ data.column_required }}</p>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Yes, Delete</button>
+            <a href="{% url 'data_list' %}" class="button">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
